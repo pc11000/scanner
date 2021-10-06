@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+  <title>My first BootstrapVue app</title>
+
+  <!-- Required Stylesheets -->
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+  />
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"
+  />
+
+  <!-- Load polyfills to support older browsers -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+
+  <script src="../node_modules/html5-qrcode/dist/html5-qrcode.min.js"></script>
+
+</head>
+<body>
+<!-- Our application root element -->
+<div id="app">
+
+</div>
+
+<div id="qr-reader" style="width: 600px"></div>
+
+<!-- Start running your app -->
+<script>
+  function onScanSuccess(decodedText, decodedResult) {
+    console.log(`Code scanned = ${decodedText}`, decodedResult);
+  }
+  var html5QrcodeScanner = new Html5QrcodeScanner(
+      "qr-reader", { fps: 10, qrbox: 250 });
+  html5QrcodeScanner.render(onScanSuccess);
+</script>
+</body>
+</html>
